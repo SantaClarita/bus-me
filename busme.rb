@@ -2,8 +2,25 @@
 require 'sinatra'
 require 'connexionz'
 require 'haml'
+require 'twilio-ruby'
 
 use Rack::Session::Pool
+
+set :account_sid, ENV['TWILIO_SID']
+set :account_token, ENV['TWILIO_TOKEN']
+set :from_phone, ENV['TWILIO_PHONE']
+
+
+post '/sms_incoming' do
+  sms_message = get_et_info(10246)
+
+  @client = Twilio::REST::Client.new settings.account_sid, settings.account_token
+  @client.account.sms.messages.create(
+      :from => settings.from_phone,
+        :to => '+16615551234',
+        :body => sms_message
+  )
+end
 
 def get_et_info(platform)
 
