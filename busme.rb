@@ -9,7 +9,7 @@ def get_et_info(platform)
 
   @client = Connexionz::Client.new({:endpoint => "http://12.233.207.166"})
 
-  @platform_info = @client.route_position_et({:platformno => platform})
+  @platform_info = @client.route_position_et(:platformno => platform)
 
   if @platform_info.route_position_et.platform.nil?
     sms_message = "No bus stop found"
@@ -23,24 +23,37 @@ def get_et_info(platform)
     elsif @platform_info.route_position_et.platform.route.is_a?(Array)
       @platforms = @platform_info.route_position_et.platform.route
       @platforms.each do |platform|
-        sms_message += "#{platform.route_no}-#{platform.destination.name}-ETA:#{platform.destination.trip.eta } "
+        if platform.destination.is_a?(Array)
+          platform.destination.each do |dest|
+            sms_message += "#{platform.route_no}-#{dest.name}"
+            sms_message += "-ETA:#{multi_eta(dest.trip)} "
+          end
+        else
+        sms_message += "#{platform.route_no}-#{platform.destination.name}"
+        sms_message += "-ETA:#{multi_eta(platform.destination.trip)} "
+        end
       end
     else
       route_no = @platform_info.route_position_et.platform.route.route_no
       destination = @platform_info.route_position_et.platform.route.destination.name
-      if @platform_info.route_position_et.platform.route.destination.trip.is_a?(Array)
-        @platform_info.route_position_et.platform.route.destination.trip.each do |mult_eta|
-          eta += "#{mult_eta.eta} "
-        end
-      else
-        eta = "#{@platform_info.route_position_et.platform.route.destination.trip.eta} "
-      end
+      eta = multi_eta(@platform_info.route_position_et.platform.route.destination.trip)
       sms_message = "#{route_no}-#{destination}-ETA:#{eta}"
     end
   end
   sms_message.rstrip
 end
 
+def multi_eta(eta)
+  multi_eta = ""
+  if eta.is_a?(Array)
+    eta.each do |mult_eta|
+      multi_eta += "#{mult_eta.eta} "
+    end
+  else
+    multi_eta = eta.eta
+  end
+  multi_eta
+end
 
 ##################
 ### WEB ROUTES ###
