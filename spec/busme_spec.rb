@@ -38,6 +38,14 @@ describe 'Bus Me Application' do
       last_response.body.should =="2-Val Verde-ETA:20"
     end
 
+    it "should return the time for multiple trips" do
+      stub_request(:get, "http://12.233.207.166/rtt/public/utility/file.aspx?contenttype=SQLXML&Name=RoutePositionET.xml&platformno=10656").
+        to_return(:status => 200, :body => fixture("multi_trip.xml"))
+      get '/eta/10656'
+      last_response.should be_ok
+      last_response.body.should =="2-Val Verde-ETA:5 20"
+    end
+
     it "should return the time for the next arrival" do
       stub_request(:get, "http://12.233.207.166/rtt/public/utility/file.aspx?contenttype=SQLXML&Name=RoutePositionET.xml&platformno=10246").
         to_return(:status => 200, :body => fixture("route_et.xml"))
