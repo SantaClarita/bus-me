@@ -5,6 +5,7 @@
     <Route RouteNo="1" Name="Whites Cyn/Castaic">
       <Destination Name="Castaic">
         <Trip ETA="3" WheelchairAccess="true" />
+        <Trip ETA="6" WheelchairAccess="true" />
       </Destination>
       <Destination Name="Whites Cyn">
         <Trip ETA="10" WheelchairAccess="true" />
