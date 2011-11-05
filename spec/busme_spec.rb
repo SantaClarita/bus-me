@@ -35,14 +35,14 @@ describe 'Bus Me Application' do
         to_return(:status => 200, :body => fixture("one_arrival.xml"))
       get '/eta/10656'
       last_response.should be_ok
-      last_response.body.should =="Route 2 -Destination Val Verde -ETA 20 min"
+      last_response.body.should =="2-Val Verde-ETA:20"
     end
 
     it "should return the time for the next arrival" do
       stub_request(:get, "http://12.233.207.166/rtt/public/utility/file.aspx?contenttype=SQLXML&Name=RoutePositionET.xml&platformno=10246").
         to_return(:status => 200, :body => fixture("route_et.xml"))
       get '/eta/10246'
-      last_response.body.should == "Route 1-Destination Castaic-ETA 24 minutes Route 4-Destination LARC-ETA 19 minutes Route 6-Destination Shadow Pines-ETA 17 minutes Route 14-Destination Plum Cyn-ETA 11 minutes "
+      last_response.body.should == "1-Castaic-ETA:24 4-LARC-ETA:19 6-Shadow Pines-ETA:17 14-Plum Cyn-ETA:11"
     end
 
   end
