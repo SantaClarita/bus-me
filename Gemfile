@@ -7,6 +7,7 @@ gem 'connexionz'
 gem 'haml'
 gem 'json'
 gem 'rake'
+gem 'twilio-ruby'
 
 group :development, :test do
   gem 'rack-test'
