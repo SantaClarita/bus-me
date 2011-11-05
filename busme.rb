@@ -45,9 +45,11 @@ end
 
 def multi_eta(eta)
   multi_eta = ""
+  arr_eta = []
   if eta.is_a?(Array)
     eta.each do |mult_eta|
-      multi_eta += "#{mult_eta.eta} "
+      arr_eta.push(mult_eta.eta)
+      multi_eta = arr_eta.join(',')
     end
   else
     multi_eta = eta.eta
