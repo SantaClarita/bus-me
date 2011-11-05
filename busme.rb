@@ -23,22 +23,22 @@ def get_et_info(platform)
     elsif @platform_info.route_position_et.platform.route.is_a?(Array)
       @platforms = @platform_info.route_position_et.platform.route
       @platforms.each do |platform|
-        sms_message += "Route #{platform.route_no}-Destination #{platform.destination.name}-ETA #{platform.destination.trip.eta } minutes "
+        sms_message += "#{platform.route_no}-#{platform.destination.name}-ETA:#{platform.destination.trip.eta } "
       end
     else
       route_no = @platform_info.route_position_et.platform.route.route_no
       destination = @platform_info.route_position_et.platform.route.destination.name
       if @platform_info.route_position_et.platform.route.destination.trip.is_a?(Array)
         @platform_info.route_position_et.platform.route.destination.trip.each do |mult_eta|
-          eta += "#{mult_eta.eta} min "
+          eta += "#{mult_eta.eta} "
         end
       else
-        eta = "#{@platform_info.route_position_et.platform.route.destination.trip.eta} min"
+        eta = "#{@platform_info.route_position_et.platform.route.destination.trip.eta} "
       end
-      sms_message = "Route #{route_no} " + "-Destination #{destination} " + "-ETA #{eta}"
+      sms_message = "#{route_no}-#{destination}-ETA:#{eta}"
     end
   end
-  sms_message
+  sms_message.rstrip
 end
 
 
