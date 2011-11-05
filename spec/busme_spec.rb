@@ -45,6 +45,12 @@ describe 'Bus Me Application' do
       last_response.body.should == "1-Castaic-ETA:24 4-LARC-ETA:19 6-Shadow Pines-ETA:17 14-Plum Cyn-ETA:11"
     end
 
+    it "should return the time for multiple arrivals on same route" do
+      stub_request(:get, "http://12.233.207.166/rtt/public/utility/file.aspx?contenttype=SQLXML&Name=RoutePositionET.xml&platformno=19444").
+        to_return(:status => 200, :body => fixture("multi_eta.xml"))
+      get '/eta/19444'
+      last_response.body.should == "1-Castaic-ETA:3 6  1-Whites Cyn-ETA:10 3-Magic Mtn-ETA:18 3-Seco Canyon-ETA:6 4-LARC-ETA:7 4-Newhall Metrolink-ETA:11 5-Stevenson Ranch-ETA:17 6-Shadow Pines-ETA:20"
+    end
   end
 end
 
