@@ -1,0 +1,15 @@
+{
+    "account_sid": "xyz987",
+    "api_version": "2010-04-01",
+    "body": "1-Castaic-ETA:24 4-LARC-ETA:19 6-Shadow Pines-ETA:17 14-Plum Cyn-ETA:11",
+    "date_created": "Wed, 18 Aug 2010 20:01:40 +0000",
+    "date_sent": null,
+    "date_updated": "Wed, 18 Aug 2010 20:01:40 +0000",
+    "direction": "outbound-api",
+    "from": "555-555-1212",
+    "price": null,
+    "sid": "xyz987",
+    "status": "queued",
+    "to": "+16615551234",
+    "uri": "/2010-04-01/Accounts/AC5ef872f6da5a21de157d80997a64bd33/SMS/Messages/SM90c6fc909d8504d45ecdb3a3d5b3556e.json"
+}
