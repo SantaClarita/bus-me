@@ -63,19 +63,19 @@ describe 'Bus Me Application' do
 
   describe "/sms_incoming" do
     before do
-      set :from_phone, '555-555-1212'
+      set :from_phone, '+16615551212'
       set :account_token, 'abc123'
       set :account_sid, 'xyz987'
       stub_request(:get, "http://12.233.207.166/rtt/public/utility/file.aspx?contenttype=SQLXML&Name=RoutePositionET.xml&platformno=10246").
         to_return(:status => 200, :body => fixture("route_et.xml"))
      stub_request(:post, "https://xyz987:abc123@api.twilio.com/2010-04-01/Accounts/xyz987/SMS/Messages.json").
-         with(:body => {"From"=>"555-555-1212", "To"=>"+16615551234", "Body"=>"1-Castaic-ETA:24 4-LARC-ETA:19 6-Shadow Pines-ETA:17 14-Plum Cyn-ETA:11"},
+         with(:body => {"From"=>"+16615551212", "To"=>"+16615551212", "Body"=>"1-Castaic-ETA:24 4-LARC-ETA:19 6-Shadow Pines-ETA:17 14-Plum Cyn-ETA:11"},
               :headers => {'Accept'=>'application/json', 'Content-Type'=>'application/x-www-form-urlencoded', 'User-Agent'=>'twilio-ruby/3.4.2'}).
          to_return(:status => 200, :body => fixture("twilio_return.json"), :headers => {})
     end
 
     it "should send a text message" do
-      post '/sms_incoming'
+      post '/sms_incoming', :From => '+16615551234', :To => '+16615551212', :Body => '10246'
       last_response.should  be_ok
     end
   end
