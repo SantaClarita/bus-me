@@ -69,7 +69,7 @@ describe 'Bus Me Application' do
       stub_request(:get, "http://12.233.207.166/rtt/public/utility/file.aspx?contenttype=SQLXML&Name=RoutePositionET.xml&platformno=10246").
         to_return(:status => 200, :body => fixture("route_et.xml"))
      stub_request(:post, "https://xyz987:abc123@api.twilio.com/2010-04-01/Accounts/xyz987/SMS/Messages.json").
-         with(:body => {"From"=>"+16615551212", "To"=>"+16615551212", "Body"=>"1-Castaic-ETA:24 4-LARC-ETA:19 6-Shadow Pines-ETA:17 14-Plum Cyn-ETA:11"},
+         with(:body => {"From"=>"+16615551212", "To"=>"+16615551234", "Body"=>"1-Castaic-ETA:24 4-LARC-ETA:19 6-Shadow Pines-ETA:17 14-Plum Cyn-ETA:11"},
               :headers => {'Accept'=>'application/json', 'Content-Type'=>'application/x-www-form-urlencoded', 'User-Agent'=>'twilio-ruby/3.4.2'}).
          to_return(:status => 200, :body => fixture("twilio_return.json"), :headers => {})
     end
