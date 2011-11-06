@@ -12,16 +12,24 @@ set :from_phone, ENV['TWILIO_PHONE']
 
 
 post '/sms_incoming' do
+  account_sid = params[:AccountSid]
   stop_number = params[:Body]
   from_phone = params[:From]
-  sms_message = get_et_info(stop_number)
 
-  @client = Twilio::REST::Client.new settings.account_sid, settings.account_token
-  @client.account.sms.messages.create(
-      :from => settings.from_phone,
-        :to => from_phone,
-        :body => sms_message
-  )
+  if account_sid == settings.account_sid
+    sms_message = get_et_info(stop_number)
+
+    @client = Twilio::REST::Client.new settings.account_sid, settings.account_token
+    @client.account.sms.messages.create(
+        :from => settings.from_phone,
+          :to => from_phone,
+          :body => sms_message
+    )
+  else
+    sms_message = "Invalid AccountSid"
+  end
+
+  sms_message
 end
 
 def get_et_info(platform)
