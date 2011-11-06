@@ -12,12 +12,14 @@ set :from_phone, ENV['TWILIO_PHONE']
 
 
 post '/sms_incoming' do
-  sms_message = get_et_info(10246)
+  stop_number = params[:Body]
+  to_phone = params[:To]
+  sms_message = get_et_info(stop_number)
 
   @client = Twilio::REST::Client.new settings.account_sid, settings.account_token
   @client.account.sms.messages.create(
       :from => settings.from_phone,
-        :to => '+16615551234',
+        :to => to_phone,
         :body => sms_message
   )
 end
