@@ -16,10 +16,6 @@ post '/sms_incoming' do
   to_phone = params[:To]
   sms_message = get_et_info(stop_number)
 
-  puts stop_number
-  puts to_phone
-  puts sms_message
-
   @client = Twilio::REST::Client.new settings.account_sid, settings.account_token
   @client.account.sms.messages.create(
       :from => settings.from_phone,
