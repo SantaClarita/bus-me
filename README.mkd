@@ -16,6 +16,13 @@ Bus Me is a real time SMS notifacation system for Santa Clarita Transit using Si
 Open your browser to http://localhost:4567 to see the web views
 
 ## <a name="configuration">Configuration</a>
+Go to [Twilio](http://www.twilio.com) and setup and account
+
+Setup your environment variables:
+
+ENV['TWILIO_SID'] = "abc123"
+
+ENV['TWILIO_TOKEN'] = "xyz987"
 
 
 ## <a name="contributing">Contributing</a>
