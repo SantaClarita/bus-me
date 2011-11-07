@@ -8,27 +8,22 @@ use Rack::Session::Pool
 
 set :account_sid, ENV['TWILIO_SID']
 set :account_token, ENV['TWILIO_TOKEN']
-set :from_phone, ENV['TWILIO_PHONE']
 
 
 post '/sms_incoming' do
   account_sid = params[:AccountSid]
   stop_number = params[:Body]
+  to_phone = params[:To]
   from_phone = params[:From]
 
   if account_sid == settings.account_sid
     sms_message = get_et_info(stop_number)
 
     @client = Twilio::REST::Client.new settings.account_sid, settings.account_token
-    @client.account.sms.messages.create(
-        :from => settings.from_phone,
-          :to => from_phone,
-          :body => sms_message
-    )
+    @client.account.sms.messages.create(:from => to_phone,:to => from_phone,:body => sms_message)
   else
     sms_message = "Invalid AccountSid"
   end
-
   sms_message
 end
 
