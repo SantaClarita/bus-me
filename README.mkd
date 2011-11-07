@@ -3,8 +3,7 @@
 Bus Me is a real time SMS notifacation system for Santa Clarita Transit using Sinatra and Twilio
 
 ## <a name="ci">Continuous Integration</a>
-
-## <a name="demo">Demo</a>
+[![Build Status](https://secure.travis-ci.org/SantaClarita/bus-me.png)](http://travis-ci.org/santa-clarita/bus-me)
 
 ## <a name="installation">Installation</a>
     git clone git://github.com/santaclarita/bus-me.git
