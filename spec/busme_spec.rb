@@ -63,7 +63,6 @@ describe 'Bus Me Application' do
 
   describe "/sms_incoming" do
     before do
-      set :from_phone, '+16615551212'
       set :account_token, 'abc123'
       set :account_sid, 'xyz987'
       stub_request(:get, "http://12.233.207.166/rtt/public/utility/file.aspx?contenttype=SQLXML&Name=RoutePositionET.xml&platformno=10246").
