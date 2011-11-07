@@ -59,6 +59,14 @@ describe 'Bus Me Application' do
       get '/eta/19444'
       last_response.body.should == "1-Castaic-ETA:3,6 1-Whites Cyn-ETA:10 3-Magic Mtn-ETA:18 3-Seco Canyon-ETA:6 4-LARC-ETA:7 4-Newhall Metrolink-ETA:11 5-Stevenson Ranch-ETA:17 6-Shadow Pines-ETA:20"
     end
+
+    it "should rescue from an error" do
+      stub_request(:get, "http://12.233.207.166/rtt/public/utility/file.aspx?contenttype=SQLXML&Name=RoutePositionET.xml&platformno=abc").
+        to_return(:status => 200, :body => "")
+      get '/eta/abc'
+      last_response.body.should == "An error has occured please try again"
+    end
+
   end
 
   describe "/sms_incoming" do
