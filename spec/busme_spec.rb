@@ -75,12 +75,12 @@ describe 'Bus Me Application' do
 
     it "should send a text message" do
       post '/sms_incoming', :AccountSid => 'xyz987', :From => '+16615551234', :To => '+16615551212', :Body => '10246'
-      last_response.body.should == "1-Castaic-ETA:24 4-LARC-ETA:19 6-Shadow Pines-ETA:17 14-Plum Cyn-ETA:11"
+      last_response.should be_ok
     end
 
     it "should return no AccountSid" do
       post '/sms_incoming', :AccountSid => 'abc123', :From => '+1661555124', :To => '+16615551212', :Body => '10246'
-      last_response.body.should == "Invalid AccountSid"
+      last_response.should be_ok
     end
   end
 

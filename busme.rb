@@ -24,7 +24,6 @@ post '/sms_incoming' do
   else
     sms_message = "Invalid AccountSid"
   end
-  sms_message
 end
 
 def get_et_info(platform)
