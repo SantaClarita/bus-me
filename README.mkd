@@ -2,10 +2,10 @@
 
 Bus Me is a real time SMS notifacation system for Santa Clarita Transit using Sinatra and Twilio
 
-## <a name="ci">Continuous Integration</a>
+## Continuous Integration
 [![Build Status](https://secure.travis-ci.org/SantaClarita/bus-me.png)](http://travis-ci.org/santa-clarita/bus-me)
 
-## <a name="installation">Installation</a>
+## Installation
     git clone git://github.com/santaclarita/bus-me.git
     cd bus-me
     bundle install
@@ -14,7 +14,7 @@ Bus Me is a real time SMS notifacation system for Santa Clarita Transit using Si
 
 Open your browser to http://localhost:4567 to see the web views
 
-## <a name="configuration">Configuration</a>
+## Configuration
 Go to [Twilio](http://www.twilio.com) and setup and account
 
 Setup your environment variables:
@@ -24,7 +24,7 @@ ENV['TWILIO_SID'] = "abc123"
 ENV['TWILIO_TOKEN'] = "xyz987"
 
 
-## <a name="contributing">Contributing</a>
+## Contributing
 In the spirit of [free software][free-sw], **everyone** is encouraged to help improve this project.
 
 [free-sw]: http://www.fsf.org/licensing/essays/free-sw.html
@@ -43,7 +43,7 @@ Here are some ways *you* can contribute:
 
 [issues]: https://github.com/santaclarita/bus-me/issues
 
-## <a name="issues">Submitting an Issue</a>
+## Submitting an Issue
 We use the [GitHub issue tracker][issues] to track bugs and features. Before
 submitting a bug report or feature request, check to make sure it hasn't
 already been submitted. You can indicate support for an existing issuse by
@@ -54,7 +54,7 @@ bug report should include a pull request with failing specs.
 
 [gist]: https://gist.github.com/
 
-## <a name="pulls">Submitting a Pull Request</a>
+## Submitting a Pull Request
 1. Fork the project.
 2. Create a topic branch.
 3. Implement your feature or bug fix.
@@ -63,7 +63,7 @@ bug report should include a pull request with failing specs.
 6. Commit and push your changes.
 7. Submit a pull request. Please do not include changes to the gemspec or version file. (If you want to create your own version for some reason, please do so in a separate commit.)
 
-## <a name="rubies">Supported Rubies</a>
+## Supported Rubies
 This application aims to support and is [tested
 against](http://travis-ci.org/santaclarita/bus-me) the following Ruby
 implementations:
@@ -89,10 +89,10 @@ timely fashion. If critical issues for a particular implementation exist at the
 time of a major release, support for that Ruby version may be dropped.
 
 
-## <a name="credits">Credits</a>
+## Credits
 
 [Ryan Resella](http://www.github.com/ryanatwork)
 
-## <a name="copyright">Copyright</a>
+## Copyright
 Copyright (c) 2011 City of Santa Clarita.
 See [LICENSE](https://github.com/santaclarita/bus-me/blob/master/LICENSE.mkd) for details.
