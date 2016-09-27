@@ -29,7 +29,7 @@ end
 def get_et_info(platform)
 
   begin
-    @client = Connexionz::Client.new({:endpoint => "http://12.233.207.166"})
+    @client = Connexionz::Client.new({:endpoint => "http://apps.santaclaritatransit.com"})
 
     @platform_info = @client.route_position_et(:platformno => platform)
 
