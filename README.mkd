@@ -1,3 +1,7 @@
+# Deprecated and retired
+THIS CODE IS NO LONGER USED OR MAINTAINED! AND IS BROKEN
+We have migrated to a new system written in-house.
+
 # Bus Me
 
 Bus Me is a real time SMS notifacation system for Santa Clarita Transit using Sinatra and Twilio
